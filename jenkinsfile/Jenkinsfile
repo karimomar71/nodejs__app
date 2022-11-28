@@ -9,13 +9,15 @@ pipeline {
         stages {
             stage('Cloning Git') {
                 steps {
-                git url:'https://github.com/karimomar71/nodejs__app'                }
-            }
-            stage('Building our image'){
-                steps {
-                
-                    sh "docker build . -t karimomar71/node-app:$BUILD_NUMBER" 
+                    git 'https://github.com/karimomar71/nodejs__app'
                 }
+            }
+            stage('Building image') {
+                steps{
+                    script {
+                    dockerImage = docker.build registry + ":$BUILD_NUMBER"
+                    }
+            }
             }
             stage('Deploy Image') {
                 steps{
