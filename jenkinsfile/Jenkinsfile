@@ -9,7 +9,7 @@ pipeline {
         stages {
             stage('Cloning Git') {
                 steps {
-                    git 'https://github.com/karimomar71/nodejs__app'
+                    git 'https://github.com/karimomar71/nodejs__app.git'
                 }
             }
             stage('Building image') {
