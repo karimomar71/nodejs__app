@@ -15,7 +15,7 @@ pipeline {
             stage('Building our image'){
             steps {
             
-                sh "docker build . -t karimomar71/myapp:$BUILD_NUMBER" 
+                sh "docker build . -t karimomar71/node-app:$BUILD_NUMBER" 
             }
             }
             stage('Deploy Image') {
