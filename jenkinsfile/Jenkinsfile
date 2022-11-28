@@ -1,0 +1,14 @@
+pipeline {
+    agent any
+    stages {
+        stage('Build') {
+            steps {
+
+                sh 
+            }
+            }
+            steps {
+                sh 'gradle --version'
+            }
+        }
+    }
