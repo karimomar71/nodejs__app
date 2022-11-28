@@ -13,25 +13,19 @@ pipeline {
                 }
             }
             stage('Building image') {
-                steps{
-                    script {
-                    dockerImage = docker.build registry + ":$BUILD_NUMBER"
-                    }
-            }
+                steps {
+            
+                   sh "docker build . -t karimomar71/node-app:$BUILD_NUMBER"
+                }
             }
             stage('Deploy Image') {
                 steps{
-                    script {
-                        docker.withRegistry( '', registryCredential ) {
-                        dockerImage.push()
-                    }
+
+                    withDockerRegistry([ credentialsId: "dockerhub", url: "" ]) {
+                    sh "docker push karimomar71/node-app:$BUILD_NUMBER"
+                    
                     }
             }
-            }
-            stage('Remove Unused docker image') {
-                steps{
-                    sh "docker rmi $registry:$BUILD_NUMBER"
-                }
             }
         }
         }
