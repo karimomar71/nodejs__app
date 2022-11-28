@@ -22,7 +22,7 @@ pipeline {
                 steps{
 
                     withDockerRegistry([ credentialsId: "dockerhub", url: "" ]) {
-                    sh "docker push karimomar71/myapp:$BUILD_NUMBER"
+                    sh "docker push karimomar71/node-app:$BUILD_NUMBER"
                     
                     }
             }
