@@ -13,12 +13,10 @@ pipeline {
                 }
             }
             stage('Building image') {
-                steps{
-                    script {
-                    dockerImage = docker.build registry + "$JOB_NAME" + ":$BUILD_NUMBER"
-                    
-                    }
-            }
+                steps {
+            
+                    sh ' docker build -t karimomar71/node-app:latest . '
+                }
             }
             stage('Deploy Image') {
                 steps{
