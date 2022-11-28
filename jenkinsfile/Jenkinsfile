@@ -15,7 +15,7 @@ pipeline {
             stage('Building image') {
                 steps {
             
-                    sh ' docker build -t karimomar71/node-app:latest . '
+                    sh  'docker build -t karimomar71/node-app:"$BUILD_NUMBER" . '
                 }
             }
             stage('Deploy Image') {
